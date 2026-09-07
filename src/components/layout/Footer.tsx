@@ -104,6 +104,8 @@ export function Footer() {
               onSubmit={(e) => e.preventDefault()}>
               
               <input
+                id="newsletter-email"
+                name="email"
                 type="email"
                 required
                 placeholder="Email address"

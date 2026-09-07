@@ -63,6 +63,8 @@ export function SearchBar({ compact = false }: {compact?: boolean;}) {
         style={{ boxShadow: focused ? '0 0 0 3px rgba(107,127,74,0.14)' : 'none' }}>
         
         <input
+          id={compact ? 'compact-product-search' : 'product-search'}
+          name="search"
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
