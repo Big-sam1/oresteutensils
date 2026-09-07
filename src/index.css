@@ -9,6 +9,7 @@
 /* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
 
 html {
+  position: relative;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
