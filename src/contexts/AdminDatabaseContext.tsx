@@ -6,7 +6,7 @@ import React, {
   useCallback,
   ReactNode,
 } from "react";
-import { supabase } from "../supabase";
+import { isSupabaseConfigured, supabase } from "../supabase";
 import { Product } from "../types";
 import { products as initialDefaultProducts } from "../data/products";
 
@@ -268,6 +268,8 @@ export function AdminDatabaseProvider({ children }: { children: ReactNode }) {
 
   // ── Fetch Products from Supabase ─────────────────────────────────────────────
   useEffect(() => {
+    if (!isSupabaseConfigured) return;
+
     let channel: ReturnType<typeof supabase.channel> | null = null;
 
     async function fetchProducts() {

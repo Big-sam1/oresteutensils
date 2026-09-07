@@ -17,8 +17,10 @@ const missingVars = [
   !_appId             && 'VITE_FIREBASE_APP_ID',
 ].filter(Boolean) as string[];
 
+export const isFirebaseConfigured = missingVars.length === 0;
+
 if (missingVars.length > 0) {
-  console.error(
+  console.warn(
     '[Firebase] Missing environment variable(s):', missingVars.join(', '),
     '\n  → Set them in Vercel Dashboard > Settings > Environment Variables'
   );

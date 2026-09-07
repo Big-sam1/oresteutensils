@@ -16,7 +16,7 @@ import {
   updateProfile,
   sendPasswordResetEmail,
 } from "firebase/auth";
-import { auth, DESIGNATED_ADMIN_EMAIL } from "../firebase";
+import { auth, DESIGNATED_ADMIN_EMAIL, isFirebaseConfigured } from "../firebase";
 import { supabase } from "../supabase";
 
 interface AuthContextValue {
@@ -66,6 +66,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!isFirebaseConfigured) {
+      setLoading(false);
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       // If customer session belongs to designated admin email, do not treat as customer
       if (firebaseUser && firebaseUser.email?.toLowerCase().trim() === DESIGNATED_ADMIN_EMAIL) {

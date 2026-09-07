@@ -8,7 +8,7 @@ export const isSupabaseConfigured = Boolean(
 );
 
 if (!isSupabaseConfigured) {
-  console.error(
+  console.warn(
     '[Supabase] Missing env vars: VITE_SUPABASE_URL and/or VITE_SUPABASE_ANON_KEY',
     '\n  → Set them in Vercel Dashboard > Settings > Environment Variables'
   );
