@@ -5,7 +5,6 @@ import {
   Routes,
   useLocation } from
 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 import { StoreProvider } from './contexts/StoreContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { AdminDatabaseProvider } from './contexts/AdminDatabaseContext';
@@ -116,7 +115,7 @@ export function App() {
   return (
     <AdminDatabaseProvider>
       <StoreProvider>
-        <BrowserRouter>
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <AuthProvider>
             <AppContent />
           </AuthProvider>

@@ -283,13 +283,8 @@ export function AdminDatabaseProvider({ children }: { children: ReactNode }) {
           setProducts(list);
           try { localStorage.setItem("oreste_live_products", JSON.stringify(list)); } catch (e) {}
         } else {
-          // Table is empty — seed it with defaults
-          const clean = initialDefaultProducts.map(cleanRecord);
-          const { error: seedErr } = await supabase.from("Products").upsert(clean);
-          if (!seedErr) {
-            setProducts(initialDefaultProducts);
-            try { localStorage.setItem("oreste_live_products", JSON.stringify(initialDefaultProducts)); } catch (e) {}
-          }
+          // Keep the storefront available until an admin explicitly syncs defaults.
+          setProducts(initialDefaultProducts);
         }
       } catch (err) {
         console.warn("Supabase products fetch error (using local cache):", err);
