@@ -1,0 +1,570 @@
+/*
+|--------------------------------------------------------------------------
+| DESIGN SECTION
+|--------------------------------------------------------------------------
+*/
+
+.design-section {
+  position: relative;
+  width: 100%;
+  min-height: 720px;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 50% 10%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.98) 42%,
+    rgba(250, 250, 250, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  isolation: isolate;
+}
+
+.dark .design-section {
+  background: radial-gradient(
+    circle at 50% 10%,
+    rgba(23, 26, 22, 1) 0%,
+    rgba(18, 20, 17, 0.98) 42%,
+    rgba(15, 18, 15, 1) 100%
+  );
+}
+
+/*
+|--------------------------------------------------------------------------
+| HEADER
+|--------------------------------------------------------------------------
+*/
+
+.section-header-custom {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow-custom {
+  margin-bottom: 12px;
+  color: #6b7f4a;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-header-custom h2 {
+  margin: 0;
+  color: #080808;
+  font-size: clamp(32px, 4.2vw, 54px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.dark .section-header-custom h2 {
+  color: #ffffff;
+}
+
+.section-header-custom p {
+  width: min(600px, 90%);
+  margin: 18px 0 20px;
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.dark .section-header-custom p {
+  color: #aaa;
+}
+
+/*
+|--------------------------------------------------------------------------
+| BUTTON
+|--------------------------------------------------------------------------
+*/
+
+.portfolio-button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 42px;
+  padding: 4px 5px 4px 19px;
+  border: 1px solid #ededed;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  color: #202020;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.dark .portfolio-button {
+  background: rgba(30, 34, 28, 0.9);
+  border-color: #333;
+  color: #f0f0f0;
+}
+
+.portfolio-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.button-arrow {
+  width: 31px;
+  height: 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #6b7f4a;
+  color: white;
+  font-size: 15px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.portfolio-button:hover .button-arrow {
+  transform: translateX(2px);
+  background: #5b6d3f;
+}
+
+/*
+|--------------------------------------------------------------------------
+| GALLERY WRAPPER & GALLERY
+|--------------------------------------------------------------------------
+*/
+
+.gallery-wrapper {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+/*
+|--------------------------------------------------------------------------
+| VIDEO CARD BASE
+|--------------------------------------------------------------------------
+*/
+
+.video-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 175px;
+  height: 245px;
+  cursor: pointer;
+  transform-origin: center center;
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease,
+    filter 0.6s ease;
+  will-change: transform;
+}
+
+.video-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #111;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.14);
+  transform: translateZ(0);
+  transition: box-shadow 0.4s ease, border-radius 0.4s ease;
+}
+
+.project-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    rgba(0, 0, 0, 0.02) 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.video-shine {
+  position: absolute;
+  width: 50%;
+  height: 150%;
+  top: -25%;
+  left: -100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: rotate(20deg);
+  transition: left 0.8s ease;
+  pointer-events: none;
+}
+
+.video-card:hover .video-shine {
+  left: 130%;
+}
+
+.video-card-content {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 4;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+/*
+|--------------------------------------------------------------------------
+| EXACT 3D CURVED POSITIONS MATCHING REFERENCE
+|--------------------------------------------------------------------------
+*/
+
+.position-center {
+  width: 188px;
+  height: 260px;
+  transform: translate(-50%, -50%) translateX(0) rotate(0deg) scale(1.04);
+  z-index: 20;
+  opacity: 1;
+  filter: none;
+}
+
+.position-center .video-card-inner {
+  border-radius: 19px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.22);
+}
+
+.position-left {
+  width: 165px;
+  height: 245px;
+  transform: translate(-50%, -50%) translateX(-205px) rotate(-6deg) scale(0.96);
+  z-index: 15;
+  opacity: 1;
+}
+
+.position-left-medium {
+  width: 155px;
+  height: 235px;
+  transform: translate(-50%, -50%) translateX(-370px) rotate(-12deg) scale(0.9);
+  z-index: 10;
+  opacity: 1;
+}
+
+.position-left-far {
+  width: 210px;
+  height: 280px;
+  transform: translate(-50%, -50%) translateX(-535px) rotate(-22deg) scale(0.92);
+  z-index: 5;
+  opacity: 0.9;
+}
+
+.position-right {
+  width: 165px;
+  height: 245px;
+  transform: translate(-50%, -50%) translateX(205px) rotate(6deg) scale(0.96);
+  z-index: 15;
+  opacity: 1;
+}
+
+.position-right-medium {
+  width: 155px;
+  height: 235px;
+  transform: translate(-50%, -50%) translateX(370px) rotate(12deg) scale(0.9);
+  z-index: 10;
+  opacity: 1;
+}
+
+.position-right-far {
+  width: 210px;
+  height: 280px;
+  transform: translate(-50%, -50%) translateX(535px) rotate(22deg) scale(0.92);
+  z-index: 5;
+  opacity: 0.9;
+}
+
+.position-hidden {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| HOVER EFFECT
+|--------------------------------------------------------------------------
+*/
+
+.position-center:hover .video-card-inner {
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.28);
+}
+
+.position-left:hover,
+.position-right:hover,
+.position-left-medium:hover,
+.position-right-medium:hover,
+.position-left-far:hover,
+.position-right-far:hover {
+  filter: brightness(1.05);
+}
+
+/*
+|--------------------------------------------------------------------------
+| NAVIGATION ARROWS
+|--------------------------------------------------------------------------
+*/
+
+.gallery-arrow {
+  position: absolute;
+  z-index: 50;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e8e8e8;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #222;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.9);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.dark .gallery-arrow {
+  background: rgba(30, 34, 28, 0.9);
+  border-color: #333;
+  color: #f0f0f0;
+}
+
+.gallery-wrapper:hover .gallery-arrow {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.gallery-arrow:hover {
+  background: #111;
+  color: white;
+}
+
+.gallery-arrow-left {
+  left: 24px;
+}
+
+.gallery-arrow-right {
+  right: 24px;
+}
+
+/*
+|--------------------------------------------------------------------------
+| PROJECT INFORMATION
+|--------------------------------------------------------------------------
+*/
+
+.project-information {
+  position: relative;
+  z-index: 30;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 50px;
+  text-align: center;
+}
+
+.project-number {
+  color: #6b7f4a;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.project-title {
+  color: #222;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dark .project-title {
+  color: #eee;
+}
+
+/*
+|--------------------------------------------------------------------------
+| PROGRESS
+|--------------------------------------------------------------------------
+*/
+
+.gallery-progress {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.progress-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #d5d5d5;
+  cursor: pointer;
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.dark .progress-dot {
+  background: #444;
+}
+
+.progress-dot.active {
+  width: 20px;
+  border-radius: 999px;
+  background: #6b7f4a;
+}
+
+/*
+|--------------------------------------------------------------------------
+| BACKGROUND DECORATION
+|--------------------------------------------------------------------------
+*/
+
+.background-decoration {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.3;
+}
+
+.decoration-one {
+  width: 250px;
+  height: 250px;
+  left: -100px;
+  top: 240px;
+  background: #e8a285;
+}
+
+.decoration-two {
+  width: 280px;
+  height: 280px;
+  right: -120px;
+  top: 240px;
+  background: #7e9b9d;
+}
+
+/*
+|--------------------------------------------------------------------------
+| TABLET & MOBILE MEDIA QUERIES
+|--------------------------------------------------------------------------
+*/
+
+@media (max-width: 1100px) {
+  .design-section {
+    min-height: 660px;
+    padding-top: 60px;
+  }
+  .gallery-wrapper {
+    height: 310px;
+  }
+  .position-left-far {
+    transform: translate(-50%, -50%) translateX(-440px) rotate(-18deg) scale(0.8);
+  }
+  .position-right-far {
+    transform: translate(-50%, -50%) translateX(440px) rotate(18deg) scale(0.8);
+  }
+  .position-left-medium {
+    transform: translate(-50%, -50%) translateX(-310px) rotate(-11deg) scale(0.85);
+  }
+  .position-right-medium {
+    transform: translate(-50%, -50%) translateX(310px) rotate(11deg) scale(0.85);
+  }
+  .position-left {
+    transform: translate(-50%, -50%) translateX(-175px) rotate(-5deg) scale(0.92);
+  }
+  .position-right {
+    transform: translate(-50%, -50%) translateX(175px) rotate(5deg) scale(0.92);
+  }
+}
+
+@media (max-width: 700px) {
+  .design-section {
+    min-height: 600px;
+    padding-top: 40px;
+  }
+  .gallery-wrapper {
+    height: 280px;
+    margin-top: 25px;
+  }
+  .position-center {
+    width: 150px;
+    height: 225px;
+    transform: translate(-50%, -50%) translateX(0) rotate(0deg) scale(1);
+  }
+  .position-left {
+    width: 130px;
+    height: 200px;
+    transform: translate(-50%, -50%) translateX(-110px) rotate(-7deg) scale(0.9);
+  }
+  .position-right {
+    width: 130px;
+    height: 200px;
+    transform: translate(-50%, -50%) translateX(110px) rotate(7deg) scale(0.9);
+  }
+  .position-left-medium {
+    width: 120px;
+    height: 185px;
+    transform: translate(-50%, -50%) translateX(-205px) rotate(-14deg) scale(0.8);
+  }
+  .position-right-medium {
+    width: 120px;
+    height: 185px;
+    transform: translate(-50%, -50%) translateX(205px) rotate(14deg) scale(0.8);
+  }
+  .position-left-far,
+  .position-right-far {
+    opacity: 0;
+  }
+  .gallery-arrow {
+    display: none;
+  }
+}
