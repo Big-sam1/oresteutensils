@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 
 // Firebase config — used for customer Auth (Google & Email) and Admin Auth
 const firebaseConfig = {
-  apiKey:            import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyAwcaW5MJ4aK_cMf7jaG7vschyU3hep6IY",
-  authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "oreste-2cbc9.firebaseapp.com",
-  projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID || "oreste-2cbc9",
-  storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "oreste-2cbc9.firebasestorage.app",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "332660968066",
-  appId:             import.meta.env.VITE_FIREBASE_APP_ID || "1:332660968066:web:981f137fe69ac8be75c29b",
+  apiKey:            import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain:        import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId:         import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket:     import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId:             import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Customer App & Auth (Default instance - used for storefront customers)
