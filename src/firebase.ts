@@ -2,12 +2,12 @@ import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 // Firebase config — loaded strictly from environment variables (never hardcoded)
-const _apiKey            = import.meta.env.VITE_FIREBASE_API_KEY;
-const _authDomain        = import.meta.env.VITE_FIREBASE_AUTH_DOMAIN;
-const _projectId         = import.meta.env.VITE_FIREBASE_PROJECT_ID;
-const _storageBucket     = import.meta.env.VITE_FIREBASE_STORAGE_BUCKET;
-const _messagingSenderId = import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID;
-const _appId             = import.meta.env.VITE_FIREBASE_APP_ID;
+const _apiKey            = import.meta.env.VITE_FIREBASE_API_KEY?.trim();
+const _authDomain        = import.meta.env.VITE_FIREBASE_AUTH_DOMAIN?.trim();
+const _projectId         = import.meta.env.VITE_FIREBASE_PROJECT_ID?.trim();
+const _storageBucket     = import.meta.env.VITE_FIREBASE_STORAGE_BUCKET?.trim();
+const _messagingSenderId = import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID?.trim();
+const _appId             = import.meta.env.VITE_FIREBASE_APP_ID?.trim();
 
 // Warn in console (visible in Vercel logs) but do NOT crash the app
 const missingVars = [
@@ -25,12 +25,12 @@ if (missingVars.length > 0) {
 }
 
 const firebaseConfig = {
-  apiKey:            _apiKey            ?? '',
-  authDomain:        _authDomain        ?? '',
-  projectId:         _projectId         ?? '',
-  storageBucket:     _storageBucket     ?? '',
-  messagingSenderId: _messagingSenderId ?? '',
-  appId:             _appId             ?? '',
+  apiKey:            _apiKey            || 'placeholder-api-key',
+  authDomain:        _authDomain        || 'placeholder.firebaseapp.com',
+  projectId:         _projectId         || 'placeholder-project',
+  storageBucket:     _storageBucket     || 'placeholder-project.firebasestorage.app',
+  messagingSenderId: _messagingSenderId || '000000000000',
+  appId:             _appId             || '1:000000000000:web:placeholder',
 };
 
 // Customer App & Auth (Default instance — used for storefront customers)
